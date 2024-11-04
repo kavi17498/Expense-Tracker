@@ -1,4 +1,5 @@
 import 'package:fivehoursapp/models/expence.dart';
+import 'package:fivehoursapp/widgets/addnewexpences.dart';
 import 'package:fivehoursapp/widgets/expence_list.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,15 @@ class _ExpencesState extends State<Expences> {
         category: Category.travel)
   ];
 
+  //funtion to open a modal overlay
+  void _openAddExpencesOverlay() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Addnewexpences();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +52,7 @@ class _ExpencesState extends State<Expences> {
           Container(
               color: Colors.yellow,
               child: IconButton(
-                onPressed: () {},
+                onPressed: _openAddExpencesOverlay,
                 icon: const Icon(Icons.add),
                 color: Colors.black,
               ))
