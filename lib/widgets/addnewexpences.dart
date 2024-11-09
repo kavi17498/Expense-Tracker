@@ -3,7 +3,8 @@ import 'package:fivehoursapp/models/expence.dart';
 import 'package:intl/intl.dart'; // Ensure you import intl for date formatting
 
 class Addnewexpences extends StatefulWidget {
-  const Addnewexpences({super.key});
+  final void Function(ExpenceModel expence) onAddExpence;
+  const Addnewexpences({super.key, required this.onAddExpence});
 
   @override
   State<Addnewexpences> createState() => _AddnewexpencesState();
@@ -74,7 +75,14 @@ class _AddnewexpencesState extends State<Addnewexpences> {
             ));
           });
     } else {
-      print("Save the Data");
+      //create the new expence
+      ExpenceModel newExpence = ExpenceModel(
+          amount: useramount,
+          date: _selectedDate,
+          title: _titleController.text.trim(),
+          category: _selectedCategory);
+      widget.onAddExpence(newExpence);
+      Navigator.pop(context);
     }
   }
 
