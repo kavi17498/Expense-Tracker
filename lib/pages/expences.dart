@@ -28,6 +28,7 @@ class _ExpencesState extends State<Expences> {
         title: "Bag",
         category: Category.travel)
   ];
+  //added some comments
 
   //funtion to open a modal overlay
   void _openAddExpencesOverlay() {
